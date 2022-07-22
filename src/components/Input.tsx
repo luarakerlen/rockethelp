@@ -1,8 +1,8 @@
-import { Input as NativeBaseInput, IInputProps } from 'native-base';
+import { Input as InputNativeBase, IInputProps } from 'native-base';
 
 export function Input({ ...rest }: IInputProps) {
 	return (
-		<NativeBaseInput
+		<InputNativeBase
 			bg='gray.700'
 			h={14}
 			size='md'
