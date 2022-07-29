@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
 	HStack,
 	IconButton,
@@ -12,9 +12,7 @@ import {
 import { ChatTeardropText, SignOut } from 'phosphor-react-native';
 
 import Logo from '../assets/logo_secondary.svg';
-import { Filter } from '../components/Filter';
-import { Order, OrderProps } from '../components/Order';
-import { Button } from '../components/Button';
+import { Button, Filter, Order, OrderProps } from '../components';
 
 export function Home() {
 	const [statusSelected, setStatusSelected] = useState<'open' | 'closed'>(

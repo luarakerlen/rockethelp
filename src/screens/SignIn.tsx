@@ -3,8 +3,7 @@ import { Heading, Icon, useTheme, VStack } from 'native-base';
 import { Envelope, Key } from 'phosphor-react-native';
 
 import Logo from '../assets/logo_primary.svg';
-import { Button } from '../components/Button';
-import { Input } from '../components/Input';
+import { Button, Input } from '../components';
 
 export function SignIn() {
 	const [name, setName] = useState('');
