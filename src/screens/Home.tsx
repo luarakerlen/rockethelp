@@ -55,8 +55,8 @@ export function Home() {
 					mt={8}
 					mb={4}
 				>
-					<Heading color='gray.100'>Meus chamados</Heading>
-					<Text color='gray.200'>3</Text>
+					<Heading color='gray.100'>Solicitações</Heading>
+					<Text color='gray.200'>{orders.length}</Text>
 				</HStack>
 
 				<HStack space={3} mb={8}>
