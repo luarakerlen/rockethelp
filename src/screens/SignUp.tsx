@@ -6,28 +6,16 @@ import { Envelope, Key } from 'phosphor-react-native';
 
 import Logo from '../assets/logo_primary.svg';
 import { Button, Input } from '../components';
-import { useNavigation } from '@react-navigation/native';
 
-export function SignIn() {
+export function SignUp() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const navigation = useNavigation();
+	const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
 	const { colors } = useTheme();
 
-	function handleCreateAccount() {
-		navigation.navigate('signUp')
-	}
-
 	function handleSignIn() {
-		if (!email || !password) {
-			return Alert.alert('Entrar', 'Informe e-mail e senha.');
-		}
-
-		setIsLoading(true);
-
 		auth()
 			.signInWithEmailAndPassword(email, password)
 			.then((response) => {
@@ -53,6 +41,41 @@ export function SignIn() {
 			});
 	}
 
+	function handleSignUp() {
+		if (!email || !password || !passwordConfirmation) {
+			return Alert.alert('Cadastrar', 'Preencha todos os campos.');
+		}
+
+		if (password !== passwordConfirmation) {
+			return Alert.alert('Cadastrar', 'As senhas devem ser iguais.');
+		}
+
+		setIsLoading(true);
+
+		auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then((response) => {
+				console.log('resposta ao cadastrar: ', response);
+				handleSignIn();
+			})
+			.catch((error) => {
+				if (error.code === 'auth/invalid-email') {
+					return Alert.alert('Cadastrar', 'E-mail inválido.');
+				}
+
+				if (error.code === 'auth/email-already-in-use') {
+					return Alert.alert('Cadastrar', 'O e-mail informado já está em uso.');
+				}
+
+				return Alert.alert(
+					'Cadastrar',
+					'Não foi possível realizar o cadastro.'
+				);
+			});
+
+		setIsLoading(false);
+	}
+
 	return (
 		<VStack flex={1} alignItems='center' bg='gray.600' px={8} pt={24}>
 			<Logo />
@@ -68,24 +91,24 @@ export function SignIn() {
 				onChangeText={setEmail}
 			/>
 			<Input
-				mb={8}
+				mb={4}
 				placeholder='Senha'
 				InputLeftElement={<Icon as={<Key color={colors.gray[300]} />} ml={4} />}
 				secureTextEntry
 				onChangeText={setPassword}
 			/>
-			<Button
-				title='Entrar'
-				w='full'
-				isLoading={isLoading}
-				onPress={handleSignIn}
+			<Input
+				mb={8}
+				placeholder='Confirmação de senha'
+				InputLeftElement={<Icon as={<Key color={colors.gray[300]} />} ml={4} />}
+				secureTextEntry
+				onChangeText={setPasswordConfirmation}
 			/>
 			<Button
-				title='Criar conta'
+				title='Cadastrar'
 				w='full'
-				bg='transparent'
-				_pressed={{ bg: 'gray.700' }}
-				onPress={handleCreateAccount}
+				isLoading={isLoading}
+				onPress={handleSignUp}
 			/>
 		</VStack>
 	);
