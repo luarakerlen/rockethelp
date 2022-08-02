@@ -27,7 +27,7 @@ export function SignIn() {
 				console.log('resposta: ', response);
 			})
 			.catch((error) => {
-				console.log('erro: ', error.code);
+				console.log('erro ao fazer login: ', error.code);
 				setIsLoading(false);
 
 				if (error.code === 'auth/invalid-email') {

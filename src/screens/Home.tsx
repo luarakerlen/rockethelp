@@ -38,7 +38,7 @@ export function Home() {
 		auth()
 			.signOut()
 			.catch((error) => {
-				console.log('erro: ', error);
+				console.log('erro ao fazer logout: ', error);
 				return Alert.alert('Sair', 'Não foi possível sair.');
 			});
 	}
