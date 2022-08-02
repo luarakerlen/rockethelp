@@ -15,7 +15,7 @@ import { OrderFirestoreDTO } from '../DTOs/OrderFirestoreDTO';
 import { dateFormat } from '../utils/firestoreDateFormat';
 import {
 	CircleWavyCheck,
-	Clipboard,
+	ClipboardText,
 	DesktopTower,
 	Hourglass,
 } from 'phosphor-react-native';
@@ -108,7 +108,7 @@ export function Details() {
 
 	return (
 		<VStack flex={1} bg='gray.700'>
-			<Box px={6} bg="gray.600">
+			<Box px={6} bg='gray.600'>
 				<Header title='Solicitação' />
 			</Box>
 
@@ -138,12 +138,12 @@ export function Details() {
 					title='equipamento'
 					description={`Patrimônio ${order.patrimony}`}
 					icon={DesktopTower}
-					footer={order.when}
 				/>
 				<CardDetails
 					title='descrição do problema'
 					description={order.description}
-					icon={Clipboard}
+					icon={ClipboardText}
+					footer={`Registrado em ${order.when}`}
 				/>
 
 				<CardDetails
