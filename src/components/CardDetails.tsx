@@ -29,7 +29,7 @@ export function CardDetails({
 			</HStack>
 
 			{!!description && (
-				<Text color='gray.100' fontSize='md'>
+				<Text mb={3} color='gray.100' fontSize='md'>
 					{description}
 				</Text>
 			)}
