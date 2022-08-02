@@ -19,6 +19,7 @@ A aplicação para gerenciar em tempo real solicitações de manutenção e supo
 
 ## Funcionalidades
 
+- Cadastro de usuários
 - Autenticação de usuários
 - Criar novas solicitações
 - Filtra solicitações pelo status
