@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
-import { HStack, ScrollView, Text, useTheme, VStack } from 'native-base';
+import { Box, HStack, ScrollView, Text, useTheme, VStack } from 'native-base';
 import {
 	Button,
 	CardDetails,
@@ -108,7 +108,9 @@ export function Details() {
 
 	return (
 		<VStack flex={1} bg='gray.700'>
-			<Header title='Solicitação' />
+			<Box px={6} bg="gray.600">
+				<Header title='Solicitação' />
+			</Box>
 
 			<HStack bg='gray.500' justifyContent='center' p={4}>
 				{order.status === 'closed' ? (
